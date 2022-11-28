@@ -18,13 +18,13 @@ public class TestPojo {
 ## How to use
 
 ```java
-    var workbookBuilder = new ExcelWorkbookBuilder(ExcelFileFormat.XLSX);
-    List<Object> data = ...
-    Workbook wb = workbookBuilder
+var workbookBuilder = new ExcelWorkbookBuilder(ExcelFileFormat.XLSX);
+List<Object> data = ...
+Workbook wb = workbookBuilder
     .addSheet("sheet name", data)
     .build();
 
-    try  (OutputStream fileOut = new FileOutputStream("output/output.xlsx")) {
-        wb.write(fileOut);
-    }
+try  (OutputStream fileOut = new FileOutputStream("output/output.xlsx")) {
+    wb.write(fileOut);
+}
 ```
