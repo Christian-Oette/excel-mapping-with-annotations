@@ -26,7 +26,7 @@ public class ExcelWorkbookBuilder {
     private final ExcelFileFormat format;
     private final List<ExcelSheetData> sheets = new ArrayList<>();
 
-    public ExcelWorkbookBuilder addSheet(String sheetName, List<Object> data) {
+    public ExcelWorkbookBuilder addSheet(String sheetName, List<? extends Object> data) {
         sheets.add(new ExcelSheetData(sheetName, data));
         return this;
     }
@@ -57,7 +57,7 @@ public class ExcelWorkbookBuilder {
     private void createTitleRow(final Sheet sheet, final ExcelSheetData excelSheetData) {
         Row row = sheet.createRow(0);
         int columnIndex = 0;
-        Optional<Object> firstItemOptional = excelSheetData.getData().stream().findFirst();
+        var firstItemOptional = excelSheetData.getData().stream().findFirst();
         if (firstItemOptional.isPresent()) {
             Object item = firstItemOptional.get();
             Field[] allFields = item.getClass().getDeclaredFields();

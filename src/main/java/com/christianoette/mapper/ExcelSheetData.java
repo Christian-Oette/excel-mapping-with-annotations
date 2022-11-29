@@ -10,9 +10,9 @@ public class ExcelSheetData {
     @Getter
     private final String name;
     @Getter
-    private final List<Object> data;
+    private final  List<? extends Object> data;
 
-    ExcelSheetData(final String name, final List<Object> dataDtos) {
+    ExcelSheetData(final String name, final  List<? extends Object> dataDtos) {
         this.name = WorkbookUtil.createSafeSheetName(Objects.requireNonNull(name, "Sheet name must not be null"));
         this.data = dataDtos;
     }
